@@ -6,12 +6,12 @@ const PORT = 4005;
 const app = express();
 app.use(express.json());
 
-app.post("/events", (req, res) => {
+app.post("/events", async (req, res) => {
   const event = req.body;
 
-  axios.post("http://localhost:4000/events", event);
-  axios.post("http://localhost:4001/events", event);
-  axios.post("http://localhost:4002/events", event);
+  await axios.post("http://127.0.0.1:4000/events", event);
+  await axios.post("http://127.0.0.1:4001/events", event);
+  await axios.post("http://127.0.0.1:4002/events", event);
 
   res.send({ status: "OK" });
 });
